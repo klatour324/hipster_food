@@ -16,4 +16,11 @@ class Event
       acc << food_truck.name
     end
   end
+
+  def food_trucks_that_sell(item)
+    @food_trucks.reduce([]) do |acc, food_truck|
+      acc << food_truck if food_truck.inventory.keys.item.name == item.name
+      acc
+    end
+  end
 end
