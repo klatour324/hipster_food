@@ -7,11 +7,13 @@ class FoodTruck
     @inventory = {}
   end
 
-  def check_stock(item)
-    @inventory.length
+  def stock(item, stock)
+    @inventory[item] = stock
   end
 
-  def stock(item, price)
-    @inventory[item] = price
+  def check_stock(item)
+    @inventory.reduce(0) do |sum, item|
+      sum + item.last
+    end
   end
 end
